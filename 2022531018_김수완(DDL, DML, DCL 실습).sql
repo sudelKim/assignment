@@ -1,0 +1,53 @@
+USE SLD;
+
+
+-- DDL
+CREATE TABLE [dbo].[TB_USER2](
+	[USER_NUMBER] [varchar] NOT NULL,
+	[USER_ID] [varchar](128) NOT NULL,
+	[USER_NM] [varchar](20) NOT NULL,
+	[REG_ID] [varchar](20) NOT NULL,
+	[REG_DATE] [datetime] NOT NULL,
+	CONSTRAINT [PK_TB_USER2] PRIMARY KEY CLUSTERED 
+	(
+		[USER_NUMBER] ASC
+	)
+) ON [PRIMARY]
+
+ALTER TABLE [TB_USER] ADD [TIME] [varchar] (225); 
+
+DROP TABLE [TB_USER2];
+
+--DML
+SELECT * FROM TB_USER
+
+DELETE FROM TB_USER
+
+UPDATE TB_USER
+SET
+	USER_NM = '±è¼ö¿Ï'
+WHERE 1=1
+AND USER_NUMBER = '0001' -- KeyValue
+
+INSERT INTO TB_USER
+(
+	USER_NUMBER
+	, USER_ID
+	, USER_NM
+	, REG_ID
+	,REG_DATE
+)
+VALUES
+(
+	'0168'
+	,'qwer1234'
+	,'È«±æµ¿2'
+	, 'admin'
+	,getDate()
+)
+
+
+
+--DCL
+GRANT SELECT TO user01;
+REVOKE SELECT TO user01;
